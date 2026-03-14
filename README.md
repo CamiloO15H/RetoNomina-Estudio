@@ -1,31 +1,16 @@
-# Reto — Sistema de Nómina
+# Sistema de Nómina - Refactorizado
 
-## Contexto
+Este proyecto es una solución al reto de procesamiento de nómina, aplicando principios de arquitectura limpia y patrones de diseño.
 
-Una empresa colombiana liquida mensualmente la nómina de sus empleados.
-Cada empleado tiene un cargo, y según ese cargo se calcula:
+## Arquitectura y Principios
+Se ha rediseñado el sistema para cumplir con los siguientes pilares:
 
-- **Salario base**
-- **Bonificación** (algunos cargos dan un bono adicional si el empleado tiene hijos a cargo)
-- **Descuentos de ley:** salud 4% y pensión 4% sobre el salario base
-- **Neto a pagar:** lo que devengó menos lo que se le descuenta
+1.  **Open/Closed Principle (OCP)**: El sistema está abierto a la extensión pero cerrado a la modificación. Se pueden añadir nuevos cargos sin alterar la lógica central de `NominaService`.
+2.  **Strategy Pattern**: La lógica de cálculo de cada cargo se ha encapsulado en clases independientes que implementan la interfaz `EstrategiaCargo`.
+3.  **Inyección de Dependencias**: `NominaService` depende de la abstracción `CargoRegistry`, lo que facilita el testing y la escalabilidad.
 
-Los cargos actuales son:
+## Cómo añadir un nuevo cargo
+Simplemente cree una nueva clase en el paquete `estrategias` que implemente `EstrategiaCargo` y regístrela en el `CargoRegistry`.
 
-| Cargo       | Salario base | Bonificación base | Bono por hijos |
-|-------------|-------------|-------------------|----------------|
-| GERENTE     | $8.500.000  | $1.200.000        | +$500.000      |
-| COORDINADOR | $4.200.000  | $600.000          | +$350.000      |
-| ASISTENTE   | $2.100.000  | $300.000          | +$200.000      |
-| OPERARIO    | $1.300.000  | $162.000          | sin bono       |
-
-## Lo que pide el negocio
-
-La empresa acaba de crear un nuevo cargo: **AUXILIAR**.
-
-- Salario base: $1.300.000
-- Bonificación: auxilio de transporte $162.000
-- Sin bono por hijos
-- Descuentos de ley iguales al resto
-
-Impleméntenlo..
+## Cargo Auxiliar
+Se ha incluido la implementación del cargo **AUXILIAR** como demostración de la facilidad de extensión del sistema.
