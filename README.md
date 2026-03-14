@@ -28,4 +28,4 @@ La empresa acaba de crear un nuevo cargo: **AUXILIAR**.
 - Sin bono por hijos
 - Descuentos de ley iguales al resto
 
-Impleméntenlo.
+Impleméntenlo..
