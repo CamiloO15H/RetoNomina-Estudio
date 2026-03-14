@@ -3,6 +3,9 @@ package com.nomina.servicio.estrategias;
 import com.nomina.dominio.Empleado;
 import com.nomina.servicio.EstrategiaCargo;
 
+/**
+ * MANUAL DE CÁLCULO PARA EL ASISTENTE.
+ */
 public class AsistenteEstrategia implements EstrategiaCargo {
     @Override
     public String getNombreCargo() {
